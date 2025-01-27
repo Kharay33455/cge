@@ -56,6 +56,7 @@ class InnerLink(models.Model):
 class Company(models.Model):
     name = models.CharField(max_length=225)
     logo = models.ImageField(upload_to='company/')
+    address = models.TextField()
 
     def __str__(self):
         return f'Company details: {self.name}'

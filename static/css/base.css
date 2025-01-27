@@ -1,58 +1,104 @@
-.serviceHead{
+.touchForm {
+    border: none;
+    border-bottom-style: solid;
+    background: transparent;
+    width: 100%;
+    color: white;
+    border-bottom-color: black;
+    text-shadow: black;
+    padding-left: 1vw;
+    line-height: 200%;
+
+}
+
+.touchForm:focus {
+    outline: none;
+    border-bottom-style: solid;
+    color: white;
+    border-bottom-color: black;
+    text-shadow: black;
+}
+
+.touchForm::placeholder{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+#inTouchInner {
+    width: 600px;
+}
+
+.serviceHead {
     font-size: 10vw;
 }
-.navLink{
+
+.navLink {
     color: black;
     text-decoration: none;
     font-size: xx-large;
     font-weight: 900;
 }
-.navLink:visited{
+
+.navLink:visited {
     color: black;
 }
-#logo{
-    width: 10vw;
+
+#logo {
+    width: 15vw;
     height: 10vw;
-    border-radius: 10vw; 
+    border-radius: 5vw;
 }
-.contain{
+
+.contain {
     width: 100vw;
     overflow-x: hidden;
 }
-.centerDiv{
+
+.centerDiv {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.staticLink{
-    color: rga(200,200,200);
+
+.staticLink {
+    color: rga(200, 200, 200);
     text-decoration: underline;
     cursor: pointer;
 }
-.staticLink:visited{
+
+.staticLink:visited {
     color: rgb(200, 200, 200);
     text-decoration: underline;
 }
-.singleService{
-    background-color: black; margin: 1vb; padding: 1vb; display: flex; align-items: center; border-radius: 1vb;
+
+.singleService {
+    background-color: black;
+    margin: 1vb;
+    padding: 1vb;
+    display: flex;
+    align-items: center;
+    border-radius: 1vb;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.serviceGrid{
+.serviceGrid {
     display: grid;
     grid-template-columns: 30vw 30vw 30vw;
     width: 100vw;
 }
 
-.innerBody{
-    width: 90vw; padding-left: 5vw;
+.innerBody {
+    width: 90vw;
+    padding-left: 5vw;
 }
 
-.text{
-    font-size: larger; line-height: 5vh; font-family: Helvetica,  Arial, sans-serif;
+.text {
+    font-size: larger;
+    line-height: 5vh;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .indexHead {
@@ -63,7 +109,8 @@
     margin-top: -10vw;
     overflow-x: hidden;
 }
-.indexHeadInner{
+
+.indexHeadInner {
     padding-top: 45vh;
 }
 
@@ -74,7 +121,7 @@
     padding-top: 0;
 }
 
-#verified{
+#verified {
     width: 0;
     height: 0;
 }
@@ -111,7 +158,7 @@
         font-size: 0vw;
     }
 
-    50%{
+    50% {
         font-size: 0vw;
     }
 
@@ -122,23 +169,27 @@
 }
 
 /* animate verification badge */
-.animateVerified{
+.animateVerified {
     animation: animateVerifiedAnimation 10s;
 }
+
 @keyframes animateVerifiedAnimation {
-    0%{
+    0% {
         width: 0;
         height: 0;
         fill: gray;
     }
-    25%{
+
+    25% {
         width: 10vw;
         height: 10vw;
     }
-    100%{
+
+    100% {
         fill: #1DA1F2;
     }
 }
+
 h1 {
     color: red;
     width: 50vw;
@@ -157,9 +208,10 @@ h1 {
 
 /* Styling for mobile devices */
 @media screen and (max-width:600px) {
-    .navLink{
+    .navLink {
         font-size: large;
     }
+
     h1 {
         color: blue;
     }
@@ -168,17 +220,25 @@ h1 {
         display: grid;
         grid-template-columns: auto;
     }
-    .serviceGrid{
+
+    .serviceGrid {
         display: grid;
         grid-template-columns: 70vw 70vw 70vw;
         width: 100vw;
         overflow-x: scroll;
     }
-    .indexHeadInner{
+
+    .indexHeadInner {
         padding-top: 15vh;
     }
-    .serviceHead{
+
+    .serviceHead {
         font-size: 7vw;
+    }
+
+    #inTouchInner {
+        width: 70vw;
+        margin-left: -6vw;
     }
 }
 
@@ -187,9 +247,10 @@ h1 {
 
 /* Styling for iPads */
 @media screen and (min-width:601px) and (max-width:1024px) {
-    .navLink{
+    .navLink {
         font-size: x-large;
     }
+
     h1 {
         color: orange;
     }
@@ -198,17 +259,23 @@ h1 {
         display: grid;
         grid-template-columns: 70vw auto;
     }
-    .serviceGrid{
+
+    .serviceGrid {
         display: grid;
         grid-template-columns: 60vw 60vw 60vw;
         width: 100vw;
         overflow-x: scroll;
     }
-    
-.indexHeadInner{
+
+    .indexHeadInner {
         padding-top: 20vh;
     }
-    .serviceHead{
+
+    .serviceHead {
         font-size: 8vw;
+    }
+
+    #inTouchInner {
+        width: 500px;
     }
 }
