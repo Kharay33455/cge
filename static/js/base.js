@@ -32,6 +32,38 @@ const hideService = (serviceId)=>{
 
 }
 
+const animateInnerLink = (serviceId) =>{
+    // get elements
+    const service = document.getElementById('inner'+serviceId);
+    const serviceDescription = document.getElementById('innerDescription'+serviceId)
+    const header = document.getElementById('innerHeader'+serviceId);
+
+
+    // change style
+    service.style.backgroundColor = 'white';
+    serviceDescription.classList.remove('hide')
+    header.style.color = 'black'
+    header.style.fontSize = 'x-large'
+    
+}
+
+const hideInnerLink = (serviceId)=>{
+    try {
+        // get elements
+
+        const service = document.getElementById('inner'+serviceId);
+        const serviceDescription = document.getElementById('innerDescription'+serviceId)
+        const header = document.getElementById('innerHeader'+serviceId);
+
+            // change style
+    service.style.backgroundColor = 'black';
+    serviceDescription.classList.add('hide')
+    header.style.color = 'white'
+    header.style.fontSize = '1vh'        
+    } catch (error) {}
+}
+
+
 // wait till window loads
 window.onload = function(){
     // get body. Currently has opacity set to zero. Increases to 1 over 3 seconds when the show class is added to it
