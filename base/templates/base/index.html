@@ -1,0 +1,128 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{%block content%}
+<div>
+    <script>
+        let active = 0;
+    </script>
+    <header>
+        <!--Div to hold header. It has its own background, AFter this div, background ends-->
+        <div class="indexHead" style="background-image: url({% static 'images/back.webp' %});">
+            <!--Cover with transparent color-->
+            <div style="background-color: rgba(255, 255, 255, 0.6);" class="indexHeadInner">
+                <main>
+                    <!--Display in grid so div exists and takes up valies specified in css-->
+                    <div class="nameGrid">
+                        <div>
+                            <div id="companyNameHeader">
+                                <h1>
+                                    {{company.name}}
+                                </h1>
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; align-items: 'center'; justify-content: center; align-self: center; padding: 10vw;">
+                            <div>
+                                <svg id="verified" xmlns="http://www.w3.org/2000/svg" class="bi bi-patch-check-fill"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                </svg>
+                            </div>
+    
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </header>
+    
+    
+    <!--Body-->
+    <div class="innerBody">
+        <div>
+            <h2>
+                Celeb Global Entertainment
+            </h2>
+        </div>
+        <div>
+            <p class="text">
+                {{company.name}} provides a comprehensive range of services in artist and content
+                management. Whether you're seeking a celebrity to elevate your event or an artist to deliver a captivating
+                performance, we are your trusted partner, renowned as one of the leading Celebrity Management Companies. Our
+                Digital Media and Rights Management division is specifically tailored to support content creators, including
+                musicians, composers, producers, actors, and performers, ensuring they maximize the potential of their
+                content. As one of the foremost Celebrity Management Agencies, we are committed to continually advancing the
+                boundaries of entertainment and content creation.
+            </p>
+            <img src="{% static 'images/celeb.webp' %}" style="width: 90vw;" />
+            <p class="text">
+                If you find yourself uncertain when selecting a Celebrity Management Company, consider that {{company.name}} stands
+                out as the premier choice.
+            </p>
+        </div>
+    </div>
+    
+    
+    
+    <!--Company services -->
+    <div style="margin-top: 5vh;">
+        <div class="innerBody">
+            <!--Header div-->
+            <div class="innerHeader">
+                <h2 style="text-decoration: underline;">
+                    {{company.name}} services
+                </h2>
+            </div>
+    
+            <!--Services list-->
+            <div class="services">
+                <div class="serviceGrid">
+                    {% for service in services %}
+                    <div onclick="
+                    if (active === {{service.id}}){
+                        hideService(active);
+                    }
+                    else{
+                        hideService(active);
+                     active={{service.id}};
+                      animateService(active)
+                    }
+     
+                      ">
+                        <div id="service{{service.id}}" class="singleService">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1vh" height="1vh" fill="white"
+                                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </div>
+                            <div class="serviceName">
+                                <h3 id="header{{service.id}}"
+                                    style="color: white; font-family: Helvetica, Arial, sans-serif; font-weight: 900; font-size: 1vh;">
+                                    &nbsp;{{service.name}}
+                                </h3>
+                            </div>
+                        </div>
+    
+                        <!--Shown when service is clicked on-->
+                        <div class="serviceDescription, hide" id="description{{service.id}}">
+                            <p>
+                                {{service.description}} <a href="{% url 'base:service' service.id %}" class="staticLink">Explore {{service.name}}</a>
+                            </p>
+                        </div>
+                    </div>
+    
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Grid of services-->
+    
+</div>
+
+
+{% endblock %}

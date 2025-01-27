@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div>
+    <div class="indexHead" style="background-image: url({{service.background.url}});">
+        <div style="background-color: rgba(255, 255, 255, 0.6);">
+            <div class="indexHeadInner" style="display: flex; justify-content: center; align-items: center;">
+                <div style="width: 99vw;">
+                    <h1 class="serviceHead">
+                        {{service.name}}
+                    </h1>
+
+
+                </div>
+            </div>
+            <div style="padding-left: 5vw; height:15vh;">
+                <p style="font-weight: 700; font-style: italic; font-size: larger;">
+                    {{service.inner_title}}
+                </p>
+            </div>
+
+        </div>
+    
+    </div>
+
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, consequuntur repellendus! Nisi veritatis quae eligendi perferendis temporibus et perspiciatis, similique, impedit maiores explicabo nam animi alias, eaque tempora sed dolor.
+        </p>
+    </div>
+</div>
+
+
+{% endblock %}

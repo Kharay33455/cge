@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Celebrity Management Site">
+    <meta property="og:description" content="Welcome to {{company.name}}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="canonical" href="" />
+    <title>{{company.name}} | Reliable celebrity management company</title>
+    <script src="{% static 'js/base.js' %}"></script>
+</head>
+
+<body style="width: 100%; word-wrap: break-word; overflow-x:hidden;">
+    <div id="body">
+        <nav style="position: absolute; top: 3%; width: 95vw; z-index: 2;">
+            <div class="centerDiv">
+                <div style="width: 95vw; justify-content: space-between;" class="centerDiv">
+                    <div>
+                        <div class="centerDiv" style="width: 30vw; justify-content: space-between;">
+                            <div>
+                                <a href="{% url 'base:base' %}">
+                                    <div>
+                                        <img id="logo" src="{{company.logo.url}}" />
+                                    </div>
+                                </a>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="centerDiv" style="width: 100vw; justify-content: space-between;">
+                        <p>
+                            <a class="navLink" href="{% url 'base:base' %}">
+                                Home
+                            </a>
+
+                        </p>
+                        <p>
+                            <a class="navLink" href="">
+                                Services
+                            </a>
+
+                        </p>
+                        <p>
+                            <a class="navLink" href="">
+                                Support
+                            </a>
+
+                        </p>
+                        <p>
+                            <a class="navLink" href="">
+                                About
+                            </a>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {%block content%}{% endblock %}
+    </div>
+</body>
+
+</html>

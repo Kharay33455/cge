@@ -1,0 +1,214 @@
+.serviceHead{
+    font-size: 10vw;
+}
+.navLink{
+    color: black;
+    text-decoration: none;
+    font-size: xx-large;
+    font-weight: 900;
+}
+.navLink:visited{
+    color: black;
+}
+#logo{
+    width: 10vw;
+    height: 10vw;
+    border-radius: 10vw; 
+}
+.contain{
+    width: 100vw;
+    overflow-x: hidden;
+}
+.centerDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.staticLink{
+    color: rga(200,200,200);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.staticLink:visited{
+    color: rgb(200, 200, 200);
+    text-decoration: underline;
+}
+.singleService{
+    background-color: black; margin: 1vb; padding: 1vb; display: flex; align-items: center; border-radius: 1vb;
+}
+
+.hide{
+    display: none;
+}
+
+.serviceGrid{
+    display: grid;
+    grid-template-columns: 30vw 30vw 30vw;
+    width: 100vw;
+}
+
+.innerBody{
+    width: 90vw; padding-left: 5vw;
+}
+
+.text{
+    font-size: larger; line-height: 5vh; font-family: Helvetica,  Arial, sans-serif;
+}
+
+.indexHead {
+    background-repeat: no-repeat;
+    background-size: 110vw 100%;
+    width: 120vw;
+    margin-left: -5vw;
+    margin-top: -10vw;
+    overflow-x: hidden;
+}
+.indexHeadInner{
+    padding-top: 45vh;
+}
+
+#companyNameHeader {
+    padding: 5vw;
+    padding-left: 5vw;
+    font-size: 0vw;
+    padding-top: 0;
+}
+
+#verified{
+    width: 0;
+    height: 0;
+}
+
+/* show animation after page load. */
+#body {
+    display: none;
+}
+
+.show {
+    animation: showAnimation 3s;
+}
+
+@keyframes showAnimation {
+    0% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Move header on page load*/
+.mover {
+    animation: moveHeader 2s;
+}
+
+@keyframes moveHeader {
+    0% {
+        padding-left: 1000vw;
+        font-size: 0vw;
+    }
+
+    50%{
+        font-size: 0vw;
+    }
+
+    100% {
+        padding-left: 20vw;
+        font-size: 5vw;
+    }
+}
+
+/* animate verification badge */
+.animateVerified{
+    animation: animateVerifiedAnimation 10s;
+}
+@keyframes animateVerifiedAnimation {
+    0%{
+        width: 0;
+        height: 0;
+        fill: gray;
+    }
+    25%{
+        width: 10vw;
+        height: 10vw;
+    }
+    100%{
+        fill: #1DA1F2;
+    }
+}
+h1 {
+    color: red;
+    width: 50vw;
+    word-wrap: break-word;
+}
+
+.nameGrid {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    width: 100vw;
+
+}
+
+
+
+
+/* Styling for mobile devices */
+@media screen and (max-width:600px) {
+    .navLink{
+        font-size: large;
+    }
+    h1 {
+        color: blue;
+    }
+
+    .nameGrid {
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .serviceGrid{
+        display: grid;
+        grid-template-columns: 70vw 70vw 70vw;
+        width: 100vw;
+        overflow-x: scroll;
+    }
+    .indexHeadInner{
+        padding-top: 15vh;
+    }
+    .serviceHead{
+        font-size: 7vw;
+    }
+}
+
+
+
+
+/* Styling for iPads */
+@media screen and (min-width:601px) and (max-width:1024px) {
+    .navLink{
+        font-size: x-large;
+    }
+    h1 {
+        color: orange;
+    }
+
+    .nameGrid {
+        display: grid;
+        grid-template-columns: 70vw auto;
+    }
+    .serviceGrid{
+        display: grid;
+        grid-template-columns: 60vw 60vw 60vw;
+        width: 100vw;
+        overflow-x: scroll;
+    }
+    
+.indexHeadInner{
+        padding-top: 20vh;
+    }
+    .serviceHead{
+        font-size: 8vw;
+    }
+}
