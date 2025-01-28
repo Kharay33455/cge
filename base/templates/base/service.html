@@ -31,14 +31,14 @@
         <!--Wraps header text and picture element-->
         {% for sh in serviceHeader %}
         {% if sh.right %}
-        <div style="display: flex; flex-direction: row-reverse;">
+        <div class="sh" style="flex-direction: row-reverse;">
             {% else %}
-            <div style="display: flex; flex-direction: row;">
+            <div class="sh" style="flex-direction: row;">
 {% endif %}
 
 
             <div>
-                <img src="{{sh.serviceHeader.picture.url}}" style="width: 50vw;" />
+                <img src="{{sh.serviceHeader.picture.url}}" class="shImage"/>
             </div>
 
             <div style="padding: 1vw;" class="centerDiv">

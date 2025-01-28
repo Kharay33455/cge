@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.middleware.csrf import get_token
 
 # Create your views here.
 

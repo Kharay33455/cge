@@ -1,3 +1,4 @@
+// animate service show on click provided it isnt being shown.
 const animateService = (serviceId) =>{
     // get elements
     const service = document.getElementById('service'+serviceId);
@@ -12,7 +13,7 @@ const animateService = (serviceId) =>{
     header.style.fontSize = 'x-large'
     
 }
-
+// Hide service text
 const hideService = (serviceId)=>{
     try {
         // get elements
@@ -32,6 +33,7 @@ const hideService = (serviceId)=>{
 
 }
 
+// animate inner link
 const animateInnerLink = (serviceId) =>{
     // get elements
     const service = document.getElementById('inner'+serviceId);
@@ -61,6 +63,43 @@ const hideInnerLink = (serviceId)=>{
     header.style.color = 'white'
     header.style.fontSize = '1vh'        
     } catch (error) {}
+}
+
+// animate chat on hover
+const animateChatWrapper = (style) =>{
+    
+    const chat = document.getElementById('chatIcon');
+    if (style === 'expand'){
+    chat.style.width = '4vb'
+    chat.style.height = '4vb'
+}
+else if (style === 'shrink'){
+    chat.style.width = '2vb'
+    chat.style.height = '2vb'   
+}
+}
+
+// animate chat box
+const animateChatBox = (type) =>{
+    const chatBox = document.getElementById('chatBox')
+    if(type === 'show'){
+        chatBox.style.opacity = '1';
+        chatBox.style.top = '0';
+        chatBox.style.left = '0';
+        chatBox.classList.add('animateChatBox');
+        setTimeout(()=>{
+            chatBox.classList.remove('animateChatBox')
+        }, 1000);
+    }
+    if (type === 'hide'){
+        chatBox.style.opacity = '0';
+        chatBox.style.top = '100vh';
+        chatBox.style.left = '100vw'
+;        chatBox.classList.add('closeChatBox');
+        setTimeout(()=>{
+            chatBox.classList.remove('closeChatBox')
+        }, 1000);
+    }
 }
 
 

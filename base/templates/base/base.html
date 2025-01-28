@@ -43,7 +43,7 @@
 
                         </p>
                         <p>
-                            <a class="navLink" href="">
+                            <a class="navLink" href="{% url 'base:base' %}#services">
                                 Services
                             </a>
 
@@ -66,6 +66,140 @@
         </nav>
         {%block content%}{% endblock %}
     </div>
+    <div id="chatWrapper">
+        <div class="centerDiv" id="chatIconWrapper" onmouseover="animateChatWrapper('expand')"
+            onmouseleave="animateChatWrapper('shrink')" onclick="animateChatBox('show')">
+            <div>
+                <span style="font-size: 2vb; font-weight: 900;">
+                    Chat
+                </span>
+            </div>
+            <div>
+                <svg id="chatIcon" xmlns="http://www.w3.org/2000/svg" fill="#0D4490" class="bi bi-chat-fill"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Chat box div-->
+    <div id="chatBox" class="centerDiv">
+
+        <div id="chatBoxInner">
+            <!--Holds entire chat box-->
+            <div style="padding: 2vw; background-color: white; padding-bottom: 3vh; border-radius: 5vw;">
+                <!--Hold entire header box-->
+                <div id="headerBox">
+                    <!--Holds close icon-->
+                    <div>
+                        <p style="text-align: right;" onclick="animateChatBox('hide')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2vh" height="2vh" fill="white"
+                                class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                <path fill-rule="evenodd"
+                                    d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </p>
+
+                    </div>
+                    <!--Holds user information-->
+                    <div style="display: flex; gap: 1vw; align-items: center;">
+
+                        <!--Hold profile picture-->
+                        <div>
+                            <img src="{% static 'images/ph.jpeg'%}"
+                                style="width: 5vh; height: 5vh; border-radius: 5vh;" />
+                        </div>
+                        <!--Hold the send a message box-->
+                        <div>
+                            <span style="font-weight: 900; font-size: 3vb;color: white;">
+                                Send us a message <br>
+
+                            </span>
+                            <small style="color: gray; font-weight: 900; color: rgb(200, 200, 200); font-size: 1.5vh;">
+                                Here to serve you.
+                            </small>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Holds chat messages-->
+                <div style="height: 50vh; overflow-y: scroll; word-wrap: break-word; padding: 1vb; position: relative; width: 100%;">
+                    <!--Initial open page.. Continue existing chat or start new-->
+                    <div style="opacity: 1;" class="chatOpen">
+                        <div class="centerDiv" style="position: relative;">
+                            <!--WHole box-->
+                            <div
+                                style="margin-top: 2vh; position: absolute; top: 0; left: 0; width: 100%; overflow-x: hidden;">
+                                    <div style="margin: 1vb;">
+                                        <span class="chatOptions">
+                                            Start new chat
+                                        </span>
+                                        <div>
+                                            <div class="inputFormWrapper">
+                                                <input placeholder="Your Name" type="text" class="formBox" id="name"/>
+                                            </div>
+                                            <br>
+                                            <div class="inputFormWrapper">
+                                                <input placeholder="Email Adress" type="email" class="formBox" id="email"/>
+                                            </div>
+                                            <br>
+
+                                        </div>
+                                    </div>
+                                    <div class="centerDiv">
+                                        <span class="chatOptions">
+                                            OR
+                                        </span>
+                                    </div>
+                                    <div style="margin: 1vb;">
+                                        <span class="chatOptions">
+                                            Continue chat
+                                        </span>
+                                        <div class="inputFormWrapper">
+                                            <input type="text" placeholder="Enter chat ID" class="formBox" id="chatID">
+                                        </div>
+
+                                        <small>
+                                            If you have an unresolved query, please enter the ticket number you received
+                                            when the conversation was initiated to continue addressing the issue.
+                                        </small>
+
+                                    </div>
+                                    <input hidden value="{{csrf_token}}"/>
+                                    <div class="centerDiv" style="margin: 1vb;">
+                                        <button type="submit" style="background-color: black; color: white; border-radius: 2vb; padding: 1vb;">Submit</button>
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="opacity: 0;" class="chatOpen">
+                    </div>
+                </div>
+
+                <!--New message box-->
+                <div class="centerDiv" style="position: relative; bottom: 0; opacity: 0;">
+                    <div class="inputFormWrapper">
+                        <input id="messageForm" type="text" placeholder="New Message" class="formBox">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2vb" height="2vb" fill="currentColor"
+                                class="bi bi-send" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Chat box div end-->
 </body>
 
 </html>

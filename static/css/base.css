@@ -1,9 +1,129 @@
-.pp{
+.formBox{
+    outline: none; border: none; background: transparent; font-size: 2vb; width: 90%;
+}
+.inputFormWrapper {
+    width: 90%;
+    background-color: white;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding: 1vb;
+    border-radius: 5vb;
+}
+
+.chatOptions {
+    font-weight: 900;
+    font-size: 3vb;
+}
+
+.chatOpen {
+    position: absolute;
+    top: 0;
+    width: 90%;
+}
+
+#headerBox {
+    background-color: #A543BF;
+    padding: 2vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
+}
+
+#chatBoxInner {
+    width: 50vw;
+    height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+#chatBox {
+    position: fixed;
+    width: 100vw;
+    background-color: rgba(200, 200, 200, 0.8);
+
+    z-index: 4;
+    height: 100vh;
+
+
+    /* Styles to be affcete by animation*/
+    opacity: 0;
+    top: 100vh;
+    left: 100vw;
+}
+
+/* Chat Box animation */
+@keyframes chatBoxAnimation {
+    0% {
+        opacity: 0;
+        top: 100vh;
+        left: 100vw;
+        transform: rotate(10);
+
+    }
+
+    100% {
+        opacity: 1;
+        top: 0;
+        left: 0;
+    }
+}
+
+.animateChatBox {
+    animation: chatBoxAnimation 1s;
+}
+
+.closeChatBox {
+    animation: chatBoxAnimation 1s reverse;
+}
+
+
+
+#chatWrapper {
+    position: fixed;
+    width: 50vw;
+    bottom: 20vh;
+    right: 2vw;
+}
+
+#chatIconWrapper {
+    gap: 1vw;
+    float: inline-end;
+    background-color: aqua;
+    padding: 1vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 5vw;
+    border-style: groove;
+    border-width: thin;
+    border-color: black;
+}
+
+#chatIcon {
+    background-color: #1DA1F2;
+    padding: 0.5vw;
+    border-radius: 1vw;
+    width: 2vb;
+    height: 2vb;
+}
+
+.shImage {
+    width: 50vw;
+}
+
+.sh {
+    display: flex;
+}
+
+.pp {
     font-style: italic;
     font-weight: 900;
     font-size: 4vw;
-    font-family: Helvetica, Arial,  sans-serif
+    font-family: Helvetica, Arial, sans-serif
 }
+
 .touchForm {
     border: none;
     border-bottom-style: solid;
@@ -25,11 +145,12 @@
     text-shadow: black;
 }
 
-.touchForm::placeholder{
+.touchForm::placeholder {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
 }
+
 #inTouchInner {
     width: 600px;
 }
@@ -56,7 +177,11 @@
 }
 
 .contain {
-    overflow-x: hidden; position: absolute; width: 100vw; top: 0; left: 0;
+    overflow-x: hidden;
+    position: absolute;
+    width: 100vw;
+    top: 0;
+    left: 0;
 }
 
 .centerDiv {
@@ -213,6 +338,16 @@ h1 {
 
 /* Styling for mobile devices */
 @media screen and (max-width:600px) {
+    #chatBoxInner {
+        width: 90vw;
+
+    }
+
+    #chatWrapper {
+
+        right: 5vw;
+    }
+
     .navLink {
         font-size: large;
     }
@@ -244,6 +379,14 @@ h1 {
     #inTouchInner {
         width: 70vw;
         margin-left: -6vw;
+    }
+
+    .sh {
+        display: block;
+    }
+
+    .shImage {
+        width: 100vw;
     }
 }
 
@@ -282,5 +425,9 @@ h1 {
 
     #inTouchInner {
         width: 500px;
+    }
+
+    #chatBoxInner {
+        width: 70vw;
     }
 }
