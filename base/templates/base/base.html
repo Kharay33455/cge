@@ -171,9 +171,9 @@
                                         </small>
 
                                     </div>
-                                    <input hidden value="{{csrf_token}}"/>
+                                    <input hidden value="{{csrf_token}}" id="csrf"/>
                                     <div class="centerDiv" style="margin: 1vb;">
-                                        <button type="submit" style="background-color: black; color: white; border-radius: 2vb; padding: 1vb;">Submit</button>
+                                        <button onclick="fetchChat()" type="submit" style="background-color: black; color: white; border-radius: 2vb; padding: 1vb;">Submit</button>
                                     </div>
                             </div>
 

@@ -64,3 +64,24 @@ class Company(models.Model):
 
     def __str__(self):
         return f'Company details: {self.name}'
+    
+class Chat(models.Model):
+    chatId  = models.CharField(max_length=250)
+    created = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=250)
+    email = models.EmailField()
+    title = models.TextField() 
+
+    def __str__(self):
+        return f'Chat {self.title}'
+
+
+class Message(models.Model):
+    text = models.TextField()
+    image = models.ImageField()
+    created = models.DateTimeField(auto_now_add=True)
+    fromSupport = models.BooleanField(default=False)
+    chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Message from chat {self.chat.title}'

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import *
 from django.middleware.csrf import get_token
-
+from django.http import JsonResponse
+import json
 # Create your views here.
 
 """
@@ -36,3 +37,20 @@ def payment(request):
     company = Company.objects.first()
     context = {'company' : company}
     return render(request, 'base/payment.html', context)
+
+
+def chat(request):
+    #try:
+        #chat = Chat.objects.filter()
+    if request.method == 'POST':
+        data =  json.loads(request.body)
+        # sanitize data
+        chatID = data['chatID']
+        name = data['name']
+        email = data['email']
+        try:
+            chat = Chat.objects.get(chatId = chatID)
+            return JsonResponse({'data' : chat})
+        except Chat.DoesNotExist:
+            context = {'data':'Chat does not exist.'}
+            return JsonResponse(context)

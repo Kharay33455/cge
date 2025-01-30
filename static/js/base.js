@@ -1,9 +1,9 @@
 // animate service show on click provided it isnt being shown.
-const animateService = (serviceId) =>{
+const animateService = (serviceId) => {
     // get elements
-    const service = document.getElementById('service'+serviceId);
-    const serviceDescription = document.getElementById('description'+serviceId)
-    const header = document.getElementById('header'+serviceId);
+    const service = document.getElementById('service' + serviceId);
+    const serviceDescription = document.getElementById('description' + serviceId)
+    const header = document.getElementById('header' + serviceId);
 
 
     // change style
@@ -11,34 +11,34 @@ const animateService = (serviceId) =>{
     serviceDescription.classList.remove('hide')
     header.style.color = 'black'
     header.style.fontSize = 'x-large'
-    
+
 }
 // Hide service text
-const hideService = (serviceId)=>{
+const hideService = (serviceId) => {
     try {
         // get elements
 
-        const service = document.getElementById('service'+serviceId);
-        const serviceDescription = document.getElementById('description'+serviceId)
-        const header = document.getElementById('header'+serviceId);
+        const service = document.getElementById('service' + serviceId);
+        const serviceDescription = document.getElementById('description' + serviceId)
+        const header = document.getElementById('header' + serviceId);
 
-            // change style
-    service.style.backgroundColor = 'black';
-    serviceDescription.classList.add('hide')
-    header.style.color = 'white'
-    header.style.fontSize = '1vh'        
+        // change style
+        service.style.backgroundColor = 'black';
+        serviceDescription.classList.add('hide')
+        header.style.color = 'white'
+        header.style.fontSize = '1vh'
     } catch (error) {
-        
+
     }
 
 }
 
 // animate inner link
-const animateInnerLink = (serviceId) =>{
+const animateInnerLink = (serviceId) => {
     // get elements
-    const service = document.getElementById('inner'+serviceId);
-    const serviceDescription = document.getElementById('innerDescription'+serviceId)
-    const header = document.getElementById('innerHeader'+serviceId);
+    const service = document.getElementById('inner' + serviceId);
+    const serviceDescription = document.getElementById('innerDescription' + serviceId)
+    const header = document.getElementById('innerHeader' + serviceId);
 
 
     // change style
@@ -46,67 +46,96 @@ const animateInnerLink = (serviceId) =>{
     serviceDescription.classList.remove('hide')
     header.style.color = 'black'
     header.style.fontSize = 'x-large'
-    
+
 }
 
-const hideInnerLink = (serviceId)=>{
+const hideInnerLink = (serviceId) => {
     try {
         // get elements
 
-        const service = document.getElementById('inner'+serviceId);
-        const serviceDescription = document.getElementById('innerDescription'+serviceId)
-        const header = document.getElementById('innerHeader'+serviceId);
+        const service = document.getElementById('inner' + serviceId);
+        const serviceDescription = document.getElementById('innerDescription' + serviceId)
+        const header = document.getElementById('innerHeader' + serviceId);
 
-            // change style
-    service.style.backgroundColor = 'black';
-    serviceDescription.classList.add('hide')
-    header.style.color = 'white'
-    header.style.fontSize = '1vh'        
-    } catch (error) {}
+        // change style
+        service.style.backgroundColor = 'black';
+        serviceDescription.classList.add('hide')
+        header.style.color = 'white'
+        header.style.fontSize = '1vh'
+    } catch (error) { }
 }
 
 // animate chat on hover
-const animateChatWrapper = (style) =>{
-    
+const animateChatWrapper = (style) => {
+
     const chat = document.getElementById('chatIcon');
-    if (style === 'expand'){
-    chat.style.width = '4vb'
-    chat.style.height = '4vb'
-}
-else if (style === 'shrink'){
-    chat.style.width = '2vb'
-    chat.style.height = '2vb'   
-}
+    if (style === 'expand') {
+        chat.style.width = '4vb'
+        chat.style.height = '4vb'
+    }
+    else if (style === 'shrink') {
+        chat.style.width = '2vb'
+        chat.style.height = '2vb'
+    }
 }
 
 // animate chat box
-const animateChatBox = (type) =>{
+const animateChatBox = (type) => {
     const chatBox = document.getElementById('chatBox')
-    if(type === 'show'){
+    if (type === 'show') {
         chatBox.style.opacity = '1';
         chatBox.style.top = '0';
         chatBox.style.left = '0';
         chatBox.classList.add('animateChatBox');
-        setTimeout(()=>{
+        setTimeout(() => {
             chatBox.classList.remove('animateChatBox')
         }, 1000);
     }
-    if (type === 'hide'){
+    if (type === 'hide') {
         chatBox.style.opacity = '0';
         chatBox.style.top = '100vh';
         chatBox.style.left = '100vw'
-;        chatBox.classList.add('closeChatBox');
-        setTimeout(()=>{
+            ; chatBox.classList.add('closeChatBox');
+        setTimeout(() => {
             chatBox.classList.remove('closeChatBox')
         }, 1000);
     }
 }
 
+// fetch chat with AJAX
+const fetchChat = async () => {
+    try {
+        const origin = window.location['origin']
+        const name = document.getElementById('name').value
+        const email = document.getElementById('email').value
+        const chatID = document.getElementById('chatID').value
+        const csrf = document.getElementById('csrf').value
+
+        const response = await fetch(origin + '/chat',
+            {
+                method: 'POST',
+                headers: {
+                    'X-CSRFTOKEN': csrf
+                },
+                body: JSON.stringify({ 'name': name, 'email': email, 'chatID': chatID })
+            }
+        )
+        const result = await response.json();
+        if (result['data']){
+            console.log('error')
+        }
+        console.log(result)
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 // wait till window loads
-window.onload = function(){
+window.onload = function () {
+    fetchChat();
     // get body. Currently has opacity set to zero. Increases to 1 over 3 seconds when the show class is added to it
-    const body =  document.getElementById('body')
+    const body = document.getElementById('body')
     // get the name header. Currently set to be invisible, comes into view after animation starts
     const nameHeader = document.getElementById('companyNameHeader');
     // verification tic
