@@ -10,5 +10,6 @@ urlpatterns = [
     path('service/<slug:service_id>/', service, name='service'),
     path('payment', payment, name='payment'),
     path('chat', chat, name='chat'),
+    path('chat/new-message', sendNewMessage, name='message')
 ]
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

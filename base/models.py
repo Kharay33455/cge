@@ -77,8 +77,8 @@ class Chat(models.Model):
 
 
 class Message(models.Model):
-    text = models.TextField()
-    image = models.ImageField()
+    text = models.TextField(blank=True, null= True)
+    image = models.ImageField(blank=True, null= True, upload_to='chatImagess/')
     created = models.DateTimeField(auto_now_add=True)
     fromSupport = models.BooleanField(default=False)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
